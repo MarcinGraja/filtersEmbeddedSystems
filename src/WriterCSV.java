@@ -36,11 +36,8 @@ public class WriterCSV {
                         step5Filter[i] + "," +
                         step10Filter[i] + "\n";
                 bufferedWriter.write(string);
-                if (i > 700){
-                    continue;
-                }
             }
-
+            bufferedWriter.flush();
         } catch (IOException e) {
             e.printStackTrace();
         }
