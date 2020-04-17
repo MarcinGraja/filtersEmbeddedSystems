@@ -12,8 +12,8 @@ public class Filters {
         }
         data.setAngularVelocities(angularVelocities);
 
-        for (int i = 1; i < data.getGyro().length; i++) {
-            complimentaryFilter[i] = 0.98 * (data.getTrueAngle(i) + angularVelocities[i] * (data.getTime(i) - data.getTime(i - 1))) + 0.02 * data.getAccelerator(i);
+        for (int i = 2; i < data.getGyro().length; i++) {
+            complimentaryFilter[i] = 0.98 * (complimentaryFilter[i-1] + angularVelocities[i] * (data.getTime(i) - data.getTime(i - 1))) + 0.02 * data.getAccelerator(i);
         }
         data.setComplimentaryFilter(complimentaryFilter);
 
