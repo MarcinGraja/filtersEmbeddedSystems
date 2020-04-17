@@ -11,11 +11,11 @@ public class ReaderTSV {
         this.data = data;
     }
 
-    public void read(){
+    public void read(String filePath){
         String row;
         BufferedReader csvReader = null;
         try {
-            csvReader = new BufferedReader(new FileReader("src/resources/mpu6050 - mpu6050.tsv"));
+            csvReader = new BufferedReader(new FileReader(filePath));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             return;

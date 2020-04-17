@@ -3,10 +3,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class WriterCSV {
-    public static void write(Data data){
+    public static void write(Data data, String filePath){
         BufferedWriter bufferedWriter;
         try {
-             bufferedWriter = new BufferedWriter(new FileWriter("out.csv"));
+             bufferedWriter = new BufferedWriter(new FileWriter(filePath));
         } catch (IOException e) {
             e.printStackTrace();
             return;
