@@ -1,6 +1,6 @@
 public class Filters {
 
-    public void filters(Data data) {
+    public static void filters(Data data) {
         double[] angularVelocities = new double[data.getGyro().length];
         double[] complimentaryFilter = new double[data.getGyro().length];
         double[] step5Filter = new double[data.getGyro().length];
@@ -12,7 +12,7 @@ public class Filters {
         }
         data.setAngularVelocities(angularVelocities);
 
-        for (int i = 0; i < data.getGyro().length; i++) {
+        for (int i = 1; i < data.getGyro().length; i++) {
             complimentaryFilter[i] = 0.98 * (data.getTrueAngle(i) + angularVelocities[i] * (data.getTime(i) - data.getTime(i - 1))) + 0.02 * data.getAccelerator(i);
         }
         data.setComplimentaryFilter(complimentaryFilter);

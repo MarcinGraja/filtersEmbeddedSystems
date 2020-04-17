@@ -8,6 +8,26 @@ public class Data {
     private double[] step5Filter;
     private double[] step10Filter;
 
+    public String getOutAsCSV(){
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("true angle," +
+                "time[ms]," +
+                "gyro," +
+                "accelerometer," +
+                "filtr komplementarny (żyroskop + akcelerometr)," +
+                "filtr kroczący; średnia z 5 ostatnich pomiarów (akcelerometr)," +
+                "filtr kroczący; średnia z 10 ostatnich pomiarów (akcelerometr)\n");
+        for (int i = 0; i < times.length; i++){
+            stringBuilder.append(trueAngles[i]).append(",").
+                    append(times[i]).append(",").
+                    append(gyro[i]).append(",").
+                    append(accelerator[i]).append(",").
+                    append(complimentaryFilter[i]).append(",").
+                    append(step5Filter[i]).append(",").
+                    append(step10Filter[i]).append(",\n");
+        }
+        return stringBuilder.toString();
+    }
     public double getTrueAngle(int i) {
         return trueAngles[i];
     }

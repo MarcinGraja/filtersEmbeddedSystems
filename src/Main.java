@@ -1,8 +1,10 @@
-import javax.print.DocFlavor;
-
 public class Main {
     public static void main(String[] args){
-        ReaderCSV readerCSV = new ReaderCSV();
-        readerCSV.read();
+        Data data = new Data();
+        ReaderTSV readerTSV = new ReaderTSV(data);
+        readerTSV.read();
+        Filters.filters(data);
+        WriterCSV.write(data);
+        return;
     }
 }
